@@ -1,10 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
-from rest_framework import routers
 
-router = routers.DefaultRouter()
-router.register('geolocation', views.GeoView)
+urlpatterns = [
+	path('geo-detail/<str:pk>/', views.geoDetail, name="geo-detail"),
+	path('geo-create/', views.geoCreate, name="geo-create"),
+	path('geo-delete/<str:pk>/', views.geoDelete, name="geo-delete"),
 
-urlpatterns = [ 
-    path('', include(router.urls)) 
-    ]
+]
