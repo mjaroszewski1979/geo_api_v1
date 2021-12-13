@@ -77,3 +77,19 @@ def geo_delete(request, pk):
 	geo.delete()
 
 	return Response('Geolocation succsesfully deleted!')
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def page_not_found(response, exception):
+    data = {
+        "404" : "Page not found"
+    }
+    return Response(data, status=404)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def server_error(response):
+    data = {
+        "500" : "Internal server error"
+    }
+    return Response(data, status=500)
