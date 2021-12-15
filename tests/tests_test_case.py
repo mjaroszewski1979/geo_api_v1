@@ -2,27 +2,19 @@ from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from . import views
-from .models import Geolocation
+from geo import views
+from geo.models import Geolocation
 from geo_api import urls
 
 
-geo = ''
-ip = ''
-user = ''
+
 
 def setUpModule():
-    global geo, ip, user
     client = Client()
     user = User.objects.create_user(username='maciej', password='jaroszewski123')
     user.save()
     client.login(username='maciej', password='jaroszewski123')
-    geo = Geolocation(
-            ip = '123.456.789',
-            longitude = '12,1234567',
-            latitude = '56,128976'
-        )
-    geo.save()
+
 
 
 
@@ -86,7 +78,12 @@ class GeoDeleteTest(TestCase):
 class GeolocationTest(TestCase):
 
     def test_geolocation_model(self):
-        global geo
+        geo = Geolocation(
+        ip = '123.456.789',
+        longitude = '12,1234567',
+        latitude = '56,128976'
+        )
+        geo.save()
         geo_all = Geolocation.objects.all()
         self.assertIsNotNone(geo)
         self.assertEquals(geo_all.count(), 1)
@@ -122,4 +119,3 @@ class ApiTokenRefresh(TestCase):
 
 
     
-
