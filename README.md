@@ -5,17 +5,14 @@
 
 ### Features:
 * Using Bulma CSS framework to implement its built-in frontend components
-* Working with template inheritance mechanism to build a base “skeleton” template that contains all the common elements and defines blocks that child templates can override
-* Implementing secure user authentication system which handles user accounts, manages cookies, user groups, and sessions, and keeps track of permissions
+* Implementing secure user authentication system which handles user accounts, manages cookies, sessions, and keeps track of permissions
 * Taking full advantage of Django's built-in features like cross-site request forgery protection to ensure safe data transfer in web forms to a database
-* Associating multiple records in a table with multiple records in another table ( many-to-many relationship ) to achieve optimal ORM performance
 * Breaking logic into smaller parts by adding various new Django applications to an existing project 
 * Writing as much functionality as possible in models or utility files instead of views 
 * Serving static files with WhiteNoise to accomplish high performance and efficiency without depending on nginx, Amazon S3 or any other external service
 * Relying on Cloudinary to provide a secure and comprehensive API for easily uploading media files from server-side code
 * Storing app’s secure credentials in environment variables
 * Utilizing setUpModule() to handle especially expensive setup operations for all of the tests within a module
-
 
 --------------------------------------------------
 
@@ -26,7 +23,7 @@
   * with the -e flag or using .env file
 
 ```
-docker run -p 8000:8000 -e STRIPE_PUB_KEY="<your stripe public key>" -e STRIPE_SECRET_KEY="<your stripe secret key>" -e EMAIL_HOST_USER="<your email host user>" -e EMAIL_HOST_PASSWORD="<your email host password>" <imagename>
+docker run -p 8000:8000 -e API_KEY="<your api key>" <imagename>
 
 ```
 ```
