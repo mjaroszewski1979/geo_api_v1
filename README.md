@@ -10,7 +10,7 @@
 * Breaking logic into smaller parts by adding various new Django applications to an existing project 
 * Writing as much functionality as possible in models or utility files instead of views 
 * Serving static files with WhiteNoise to accomplish high performance and efficiency without depending on nginx, Amazon S3 or any other external service
-* Relying on Cloudinary to provide a secure and comprehensive API for easily uploading media files from server-side code
+* Relying on JSON Web Token - an open standard used to share security information between two parties — a client and a server, to ensure that sensitive data signed using a  cryptographic algorithm cannot be altered after the token is issued
 * Storing app’s secure credentials in environment variables
 * Utilizing setUpModule() to handle especially expensive setup operations for all of the tests within a module
 
@@ -31,8 +31,6 @@ docker run -p 8000:8000 --env-file .env <imagename>
 
 ```
 
-
-![caption](https://github.com/mjaroszewski1979/django-eshop-v2/blob/main/urban_style.gif)
   
   Live | Code | Docker | Technologies
   ---- | ---- | ------ | ------------
