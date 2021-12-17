@@ -1,8 +1,20 @@
+# Python imports
 import os
 import requests
+# App imports
 from .models import Geolocation
 
+
 def get_geo(ip):
+    '''
+    This function is using requests and calling an external api service to extract geolocation data for a given ip address
+
+            Parameters:
+                    ip (str): A valid ip address
+
+            Returns:
+                    message (json): Success or error message depending on user input and response status codes 
+    '''
     fields = 'longitude,latitude,ip'
     response = requests.get('http://api.ipstack.com/' + ip + '?access_key=' + os.environ.get('API_KEY') + '&fields=' + fields)
     if response.status_code == 200:
