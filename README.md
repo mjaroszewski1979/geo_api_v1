@@ -18,7 +18,7 @@
 
 ### How it works:
 * Firstly navigate to the index page and fill out the form to create an account
-* Next make a post request to 'api/token' endpoint with your username and password credentials
+* Next make a post request to 'api/token/' endpoint with your username and password credentials
 * After acquiring the necessary access token you can now authorize yourself and start creating, viewing and removing geolocation data by using these three endpoints:
   * 'geo-create/' to add records to the database
   * 'geo-detail/<str:pk>/' to view records based on provided ip address(pk)
