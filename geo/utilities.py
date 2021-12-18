@@ -16,7 +16,7 @@ def get_geo(ip):
                     message (json): Success or error message depending on user input and response status codes 
     '''
     fields = 'longitude,latitude,ip'
-    response = requests.get('http://api.ipstack.com/' + ip + '?access_key=' + os.environ.get('API_KEY') + '&fields=' + fields)
+    response = requests.get('http://api.ipstack.com/' + str(ip) + '?access_key=' + os.environ.get('API_KEY') + '&fields=' + fields)
     if response.status_code == 200:
         try:
             response_json = response.json()
