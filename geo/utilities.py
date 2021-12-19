@@ -2,25 +2,27 @@ import os
 import requests
 from .models import Geolocation
 
-def get_geo(ip):
+def get_geo(ip, api_key = os.environ.get('API_KEY')):
+    '''
+    This function is using requests and calling an external api service to extract geolocation data for a given ip address
+            Parameters:
+                    ip (str): A valid ip address
+            Returns:
+                    message (json): Success or error message depending on user input and response status codes 
+    '''
     fields = 'longitude,latitude,ip'
-    response = requests.get('http://api.ipstack.com/' + ip + '?access_key=' + os.environ.get('API_KEY') + '&fields=' + fields)
+    response = requests.get('http://api.ipstack.com/' + str(ip) + '?access_key=' + api_key + '&fields=' + fields)
+    response_json = response.json()
     if response.status_code == 200:
-        try:
-            response_json = response.json()
-            longitude = response_json['longitude']
-            latitude = response_json['latitude']
-            success_msg = 'Geolocation added!'
-            new_geo = Geolocation.objects.create(ip=ip, longitude=longitude, latitude=latitude)
+        if response_json.get('ip') != None:
+            longitude = response_json.get('longitude')
+            latitude = response_json.get('latitude')
+            success_msg = { 'Success' : 'Geolocation added!' }
+            new_geo = Geolocation.objects.create(ip=str(ip), longitude=longitude, latitude=latitude)
             new_geo.save()
             return success_msg
-        except KeyError:
-            error_msg = {
-                    "Error" : "Invalid IP address"
-                    }
+        else:
+            error_msg = response_json
             return error_msg
     else:
-        status_msg = {
-                "Invalid status code" : response.status_code
-                }
-        return status_msg
+        return response.status_code
