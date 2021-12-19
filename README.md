@@ -17,6 +17,7 @@
 --------------------------------------------------
 
 ### How it works:
+* Create an account on https://ipstack.com/ to obtain your free api key
 * Firstly navigate to the index page and fill out the form to create an account
 * Next make a post request to 'api/token/' endpoint with your username and password credentials
 * After acquiring the necessary access token you can now authorize yourself and start creating, viewing and removing geolocation data by using these three endpoints:
