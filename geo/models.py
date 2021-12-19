@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Geolocation(models.Model):
-    ip = models.CharField(max_length=50)
+    ip = models.CharField(max_length=50, unique=True)
     longitude = models.CharField(max_length=50)
     latitude = models.CharField(max_length=50)
 
