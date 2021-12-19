@@ -6,5 +6,4 @@ urlpatterns = [
 	path('geo-detail/<str:pk>/', views.geo_detail, name='geo-detail'),
 	path('geo-create/', views.geo_create, name='geo-create'),
 	path('geo-delete/<str:pk>/', views.geo_delete, name='geo-delete'),
-
 ]
