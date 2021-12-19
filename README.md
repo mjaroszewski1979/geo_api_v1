@@ -47,6 +47,12 @@ docker run -p 8000:8000 --env-file .env <imagename>
 
 --------------------------------------------------
 
+### Code Coverage
+
+<img src="https://github.com/mjaroszewski1979/geo_api_v1/blob/main/html-report.png">
+
+-------------------------------------------------
+
 ![caption](https://github.com/mjaroszewski1979/geo_api_v1/blob/main/drf_geo_api.gif)
 
   
