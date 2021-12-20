@@ -1,5 +1,6 @@
 # python imports
 import unittest
+import os
 
 # app imports
 from geo.utilities import get_geo
@@ -8,12 +9,12 @@ from geo.utilities import get_geo
 class TestGetGeo(unittest.TestCase):
 
     def test_get_geo_valid_ip(self):
-        actual = get_geo('134.201.250.155', 'cce8aa93f5ee3af0f4698023b2bc1f13')
+        actual = get_geo('134.201.250.155', os.environ.get('API_KEY'))
         expected = {'Success': 'Geolocation added!'}
         self.assertEquals(actual, expected)
 
     def test_get_geo_invalid_ip(self):
-        actual = get_geo('12', 'cce8aa93f5ee3af0f4698023b2bc1f13')
+        actual = get_geo('12',  os.environ.get('API_KEY'))
         expected = {'success': False,
                     'error': {'code': 106,
                     'type': 'invalid_ip_address',
