@@ -1,4 +1,4 @@
-## <img src="https://github.com/mjaroszewski1979/mjaroszewski1979/blob/main/login.png">  &nbsp; Geo Api
+## Geo Api
 ### This is a Django Rest Framework API project powered by JSON Web Token authentication mechanism to provide convenient access to the IP geolocation database from applications written in the Python language. Its main function is to take full advantage of the custom models and serializers, to make it possible for the users to create, view and delete geolocation records.
 
 --------------------------------------------------
