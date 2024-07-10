@@ -1,37 +1,62 @@
-# Django imports
+# Import User model for creating test user
 from django.contrib.auth.models import User
+# Import reverse function for generating URLs
 from django.urls import reverse
 
-# Rest framework imports
+# Import APIClient for making test requests
 from rest_framework.test import APIClient
+# Import status constants for HTTP status codes
 from rest_framework import status
+# Import APITestCase for testing API endpoints
 from rest_framework.test import APITestCase
 
-# App imports
+# Import Geolocation model from the 'geo' app
 from geo.models import Geolocation
 
-# Creating parent test class that inherits from APITestCase 
+# Creating parent test class that inherits from APITestCase
 class TestCaseBase(APITestCase):
+    """
+    Base test case class that sets up authentication for API testing using APIClient.
+    """
     @property
     def bearer_token(self):
+        """
+        Property method to retrieve Bearer token for authenticated requests.
+
+        Returns:
+            dict: HTTP Authorization header with Bearer token.
+        """
+
         username = 'mjaro1245'
         password = 'jaroszewski987'
-        # Instantiating client to make requests for testing purposes
+        
+        # Instantiate APIClient for making test requests
         client = APIClient()
+        
+        # Generate URL for obtaining API token
         url = reverse('api-token')
-        # Creating and saving test user
+        
+        # Create and save a test user
         user = User.objects.create_user(username=username, password=password)
         user.save()
-        # Using client to login new user
+        
+        # Log in the test user using the APIClient
         self.client.login(username=username, password=password)
-        # Sending a post request to acquire access token
+        
+        # Send a POST request to obtain the access token
         resp = client.post(url, {'username': username, 'password': password}, format='json')
+
+        # Extract the Bearer token from the response data
         token = resp.data['access']
+
+        # Return HTTP Authorization header with Bearer token
         return {"HTTP_AUTHORIZATION":f'Bearer {token}'}
 
 class TestGeoAPI(TestCaseBase):
+    """
+    Test case class for testing Geo API endpoints.
+    """
     
-    # Using setUp method to define instructions that will be executed before and after each test
     def setUp(self):
         self.geo = Geolocation(
             ip = '134.201.250.155',
@@ -40,26 +65,46 @@ class TestGeoAPI(TestCaseBase):
         )
         self.geo.save()
 
-    # Testing geo_detail endpoint with valid credentials
     def test_get_geo_detail(self):
+        """
+        Test method for testing geo_detail endpoint with valid credentials.
+        """
         url = reverse('geo-detail', args=(self.geo.ip, ))
         response = self.client.get(url, **self.bearer_token)
+
+        # Assert HTTP status code is 200 (OK)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+        # Assert the IP address returned in response data matches the expected IP
         self.assertTrue(self.geo.ip in response.data['ip'])
-    
-    # Testing geo_delete endpoint with valid credentials
+
     def test_delete_geo(self):
+        """
+        Test method for testing geo_delete endpoint with valid credentials.
+        """
+        
         url = reverse('geo-delete', args=(self.geo.ip, ))
         response = self.client.get(url, **self.bearer_token)
+
+        # Assert HTTP status code is 200 (OK)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+        # Assert the response data matches the success message for deletion
         self.assertEquals({'Succes': 'Geolocation succsesfully deleted!'}, response.data)
     
-    # Testing geo_create endpoint with valid credentials
     def test_create_geo(self):
+        """
+        Test method for testing geo_create endpoint with valid credentials.
+        """
+        
         data = {"ip" : "109.173.214.104"}
         url = reverse('geo-create')
         response = self.client.post(url, data, **self.bearer_token)
+
+        # Assert HTTP status code is 200 (OK)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+        # Assert the success message is present in the response data
         self.assertTrue('Geolocation added!' in response.data)
 
 
