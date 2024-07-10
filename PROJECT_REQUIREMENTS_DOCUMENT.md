@@ -41,3 +41,29 @@ The geo-create view must handle GET requests correctly. | When a GET request is 
 Requirement | Condition | Expected Outcome | Test Case
 ----------- | --------- | ---------------- | ---------
 The geo-delete view must handle GET requests correctly. | When a GET request is made to the 'geo-delete' URL with a valid IP address. | The response should have a status code of 401 (Unauthorized), indicating authentication is required to delete geolocation data. | test_geo_delete_get_without_authentication
+
+#### Geolocation Model Requirements
+
+Requirement | Condition | Expected Outcome | Test Case
+----------- | --------- | ---------------- | ---------
+The Geolocation model must function correctly. | When creating a new Geolocation object with specified attributes. | The Geolocation object should be saved successfully, and the total count of Geolocation objects in the database should be 1. The IP address of the saved Geolocation object should match its string representation. | test_geolocation_model
+
+#### API Token View Requirements
+
+Requirement | Condition | Expected Outcome | Test Case
+----------- | --------- | ---------------- | ---------
+The api-token view must handle POST requests correctly. | When a POST request is made to the 'api-token' URL with valid authentication credentials. | The response should have a status code of 200, indicating successful token generation. | test_api_token_post
+
+#### API Token Refresh View Requirements
+
+Requirement | Condition | Expected Outcome | Test Case
+----------- | --------- | ---------------- | ---------
+The api-token-refresh view must resolve correctly. | When resolving the 'api-token-refresh' URL. | The view function should correctly resolve to the TokenRefreshView class. | test_api_token_refresh_url_is_resolved
+
+#### Geolocation API Integration Requirements
+
+Requirement | Condition | Expected Outcome | Test Case
+----------- | --------- | ---------------- | ---------
+The get_geo function must correctly retrieve geolocation data for a valid IP address. | When get_geo is called with a valid IP address and a valid API key. | The function should return a dictionary indicating success with a message {'Success': 'Geolocation added!'}. | test_get_geo_valid_ip
+The get_geo function must handle invalid IP addresses correctly. | When get_geo is called with an invalid IP address (e.g., '12') and a valid API key. | The function should return a dictionary indicating failure with an error message: | test_get_geo_invalid_ip
+The get_geo function must handle invalid API keys correctly. | When get_geo is called with a valid IP address and an invalid API key. | The function should return a dictionary indicating failure with an error message: | test_get_geo_invalid_api_key
