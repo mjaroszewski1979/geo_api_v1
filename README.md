@@ -3,28 +3,19 @@
 
 #### By leveraging the power of the Django Rest Framework API and the convenience of JWT authentication, developers can quickly and easily create powerful applications that make use of IP geolocation data. Whether you're building a simple web app or a complex enterprise application, this project can help you get started quickly and easily.
 
-The Django Rest Framework API is a powerful tool for developers who want to create web APIs quickly and easily using the Django framework. With its built-in support for serialization, authentication, and validation, the Django Rest Framework API makes it easy for developers to create robust and secure APIs that can be used by a wide range of applications.
 
-JSON Web Tokens (JWTs) are a popular mechanism for securing web APIs. JWTs allow developers to authenticate users without the need for session tokens or cookies, making them a great choice for modern web applications.
 
-The IP geolocation database provides developers with a wealth of information about the location of an IP address, including the country, city, and region. This information can be incredibly useful for a wide range of applications, including online advertising, e-commerce, and security.
+### Features
+* Data Fetching: Retrieves geographical data from multiple APIs, ensuring comprehensive and up-to-date information.
+* Cross-Site Request Forgery (CSRF) Protection: Utilizes Django's built-in CSRF protection to safeguard against CSRF attacks.
+* Robust User Authentication: Includes a secure user authentication system that handles user accounts, manages cookies and sessions, and tracks permissions.
+* Modular Architecture: Promotes clean and maintainable code by breaking down the logic into smaller, manageable parts.
+* Efficient Functionality Distribution: Encourages writing functionality in Django models or utility files instead of views.
+* Environment Variable Management: Stores sensitive information such as API keys and database passwords in environment variables.
+* Optimized Testing: Utilizes the setUp method in Django tests to handle expensive setup operations, improving the efficiency and reliability of the test suite.
 
---------------------------------------------------
 
-### Features:
-* This project takes advantage of the powerful **Bulma CSS Framework** to implement its built-in frontend components. Bulma is a modern and flexible CSS framework that is designed to make it easy for developers to create beautiful and responsive web interfaces. One of the key advantages of using a CSS framework like Bulma is that it provides a set of pre-designed components that can be easily customized to fit the needs of your application. This can save developers a significant amount of time and effort, as they don't need to spend time designing and building each component from scratch. Bulma includes a wide range of components, including buttons, forms, tables, and navigation menus. Each component is designed to be fully customizable, so developers can easily modify the look and feel to fit their specific needs. In addition to its built-in components, Bulma also includes a robust set of utilities that can be used to quickly style any element on a webpage. These utilities include margin and padding classes, as well as text alignment and color classes. Another key advantage of using Bulma is that it is highly responsive, meaning that it will automatically adjust to different screen sizes and resolutions. This makes it an ideal choice for developers who want to create web applications that work well on both desktop and mobile devices.
-* One of the most critical aspects of any web application is user authentication, and this project includes a robust and secure user authentication system. **This system is designed to handle user accounts, manage cookies and sessions, and keep track of permissions, ensuring that users can access the resources they need while maintaining the security and integrity of the application**. At its core, the user authentication system works by verifying the user's identity and granting them access to the application's resources. This process typically involves collecting user credentials, such as a username and password, and comparing them to a database of authorized users. Once the user's identity is verified, the application will grant them access to the appropriate resources based on their permissions. In addition to handling user accounts and access permissions, the user authentication system also manages cookies and sessions. Cookies are small text files that are stored on the user's device and used to track their activity on the website. Sessions, on the other hand, are temporary storage areas that are used to keep track of user activity during a specific browsing session. By managing cookies and sessions, the authentication system can ensure that users remain logged in and that their activity is tracked appropriately. Another critical aspect of the user authentication system is its ability to manage permissions. Permissions are used to determine which users have access to specific resources within the application. For example, an administrator might have permission to access sensitive data, while a regular user might only be able to view public data. By managing permissions carefully, the authentication system can ensure that users only have access to the resources they need.
-* One way to ensure that data is transferred safely is by using Django's built-in features, including **Cross-Site Request Forgery Protection**. Cross-site request forgery (CSRF) attacks occur when a malicious website tricks a user's browser into making a request to another website without their knowledge or consent. This type of attack can result in data theft or corruption, making it essential to protect against. Django's CSRF protection works by including a unique token in each form submission. This token is validated on the server-side to ensure that the request came from the correct user and not from a malicious source. By using this feature, developers can ensure that web forms are safe and secure, and that data is transferred safely to the database. In addition to CSRF protection, Django also includes other built-in security features, such as user authentication and authorization, password hashing, and SSL encryption. These features are designed to protect against common security threats and make it easier for developers to build secure web applications.
-* **Breaking down logic into smaller, manageable parts** is crucial to ensuring the success of any project. One way to achieve this is by adding various new Django applications to an existing project. By creating smaller, more focused applications within a larger project, developers can improve code organization, maintainability, and scalability. Each application can handle a specific task or feature of the project, such as user authentication, data management, or payment processing. This approach can also make it easier to debug and test individual parts of the codebase. When adding new applications to an existing Django project, it's important to consider the functionality and purpose of each application. Each application should be responsible for a specific feature or function within the project, making it easier to modify and maintain the codebase in the long run. However, it's important to keep in mind that adding too many applications can also have drawbacks. It can increase the complexity of the codebase and slow down the overall performance of the project. Therefore, it's crucial to strike a balance between breaking down the logic of the project and keeping it manageable.
-* One way to achieve clean and maintainable code is by **writing as much functionality as possible in Django models or utility files instead of views**. Django allows developers to separate their application's logic into three main components: models, views, and templates. While views are responsible for handling user requests and returning responses, models define the structure of the application's data and provide an interface for interacting with it. By writing as much functionality as possible in models or utility files, developers can improve the maintainability and organization of their codebase. This approach helps to keep views lean and focused on their primary responsibilities, improving code readability and making it easier to debug and maintain. Furthermore, writing functionality in models or utility files can also improve the performance of the application. Since models and utility files are loaded only once when the application starts up, the cost of loading and processing is spread out over the lifetime of the application.
-* When building a web application, serving static files efficiently can have a huge impact on its performance. **WhiteNoise** is a Python package that can help achieve this goal without relying on external services like Nginx or Amazon S3. By using WhiteNoise, static files like CSS, JavaScript, and images can be served quickly and easily, improving the user experience. This package is designed to work seamlessly with Django and can be easily integrated into your project. By leveraging the power of WhiteNoise, you can improve the performance of your web application and provide a better experience for your users.
-* **JSON Web Token (JWT)** is a widely used security mechanism that allows for the exchange of information between a client and server in a secure and reliable manner. It uses a cryptographic algorithm to sign sensitive data and ensures that it cannot be altered once it has been issued. This open standard provides a way for applications to share authentication and authorization data without the need for the user to enter their credentials each time. JWT is widely used in modern web applications and APIs because of its simplicity, ease of use, and high level of security. By relying on JWT for secure data exchange, applications can ensure that sensitive information is protected from unauthorized access and manipulation.
-* Understanding the importance of keeping sensitive information secure, we always store API keys, database passwords, and other credentials in environment variables. Environment variables are values that can be set in the operating system and accessed by applications. By **storing sensitive information in environment variables**, developers can keep this information separate from the codebase, reducing the risk of accidental exposure. Storing sensitive information in environment variables also makes it easier to manage and maintain credentials across multiple environments. Rather than hard-coding credentials into the application, environment variables can be set differently for each environment, such as development, staging, and production. This helps to ensure that sensitive information is not accidentally exposed in a non-production environment. However, it's important to keep in mind that environment variables are not a foolproof security measure. They are still vulnerable to potential security breaches if not properly secured or if accessed by unauthorized users. Therefore, it's important to follow best practices for securing sensitive information, such as using strong passwords, limiting access to credentials, and regularly monitoring and auditing access to environment variables.
-* Writing efficient and fast tests is essential for a successful project. In Django, one way to optimize tests is by **utilizing the setUp method** to handle especially expensive setup operations for all of the tests within a module. The setUp method is a method that is called before each test in a module. It is used to set up any test data or other resources needed for the tests. By using the setUp method to handle expensive setup operations, such as creating database records or generating test data, we can save time and resources in our test suite. Using the setUp method not only saves time, but it also makes our tests more reliable. By setting up the necessary data and resources before each test, we ensure that our tests are always running with the correct environment and data. This helps to prevent false positives or negatives in our test results, which can be time-consuming and frustrating to debug. However, it's important to keep in mind that the setUp method should be used judiciously. While it can be tempting to use the setUp method to handle all setup operations, doing so can actually slow down our tests. This is because the setUp method is called before each test, and if it is too complex or time-consuming, it can add significant overhead to our test suite.
-
---------------------------------------------------
-
-### How it works:
+### How it Works
 * Create an account on https://ipstack.com/ to obtain your free api key
 * Firstly navigate to the index page and fill out the form to create an account
 * Next make a post request to 'api/token/' endpoint with your username and password credentials
@@ -34,32 +25,87 @@ The IP geolocation database provides developers with a wealth of information abo
   * 'geo-delete/<str:pk>/' to remove records based on provided ip address (pk)
 * Make sure to set application/x-www-form-urlencoded as content type when sending user credentials and bearer token in the authorization header for your access JWT respectively
 
---------------------------------------------------
-  
+### Installation
 
+1. Clone the repository:
+  ```bash
+  git clone https://github.com/mjaroszewski1979/geo_api_v1.git
+  cd geo_api_v1
+  ```  
+2. Create a virtual environment:
+  ```bash
+  python3 -m venv env
+  source env/bin/activate
+  ```  
+3. Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```  
+4. Set up environment variables:
+   Create a .env file and add your API keys and other configurations:
+  ```bash
+  API_KEY=<your-api-key>
+  ```  
+4. Apply migrations and start the server:
+   Create a .env file and add your API keys and other configurations:
+  ```bash
+  python manage.py migrate
+  python manage.py runserver
+  ```  
+### Usage
+#### Access the application:
+Open your browser and go to http://127.0.0.1:8000/.
 
-### Docker info:
+### Interact with API Endpoints:
+Use tools like curl or Postman to interact with the available endpoints and retrieve geographical data.
+
+### Testing
+
+1. Run unit tests:
+  ```bash
+  python manage.py test
+  ```  
+2. Code Coverage:
+   To combine and view the code coverage of both unit and integration tests:
+  ```bash
+  coverage run -p manage.py test && coverage combine && coverage html
+  ```
+<img src="https://github.com/mjaroszewski1979/geo_api_v1/blob/main/html-report.png">
+
+### Docker Info
 * Pull an image from my Docker Hub - click on the icon below
 * Create and start a container 
 * Pass environment variables to your container
   * with the -e flag or using .env file
 
-```
+```sh
 docker run -p 8000:8000 -e API_KEY="<your api key>" <imagename>
 
 ```
-```
+```sh
 docker run -p 8000:8000 --env-file .env <imagename>
 
 ```
 
---------------------------------------------------
+### Technologies Used
+* Django: A high-level Python web framework that enables rapid development of secure and maintainable websites.
+* Django Rest Framework (DRF): A powerful and flexible toolkit for building Web APIs. DRF includes built-in support for serialization, authentication, and validation, making it easy to create robust and secure APIs.
+* JSON Web Tokens (JWT): A popular mechanism for securing web APIs. JWTs provide a stateless authentication method, eliminating the need for session tokens or cookies.
+* IP Geolocation Database: Provides detailed information about the location of an IP address, including country, city, and region. 
+* Docker: A platform for containerizing applications, ensuring consistency across development, testing, and production environments.
+* Bulma CSS Framework: A modern and responsive CSS framework that simplifies frontend development. Bulma includes pre-designed, customizable components such as buttons, forms, tables, and navigation menus.
+* WhiteNoise: A Python package that simplifies serving static files directly from the application, enhancing performance without relying on external services.
 
-### Code Coverage:
+### Contributing
+* Fork the repository.
+* Create a new branch (git checkout -b feature-branch).
+* Make your changes and commit them (git commit -m 'Add new feature').
+* Push to the branch (git push origin feature-branch).
+* Open a pull request.
 
-<img src="https://github.com/mjaroszewski1979/geo_api_v1/blob/main/html-report.png">
+### Contact
+For questions or feedback, please contact [mjaroszewski1979.](https://github.com/mjaroszewski1979)
 
--------------------------------------------------
 
 ![caption](https://github.com/mjaroszewski1979/geo_api_v1/blob/main/geo_mockup.png)
 
